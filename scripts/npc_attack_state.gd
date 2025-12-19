@@ -29,7 +29,7 @@ func enter():
 		if enemy.player.has_method("take_damage"):
 			enemy.player.take_damage(10)
 
-	# --- NEW SECTION: RECOVERY PHASE ---
+	# RECOVERY PHASE
 	
 	# 4. Play "Idle" so they don't freeze in the attack pose
 	if abs(direction.x) > abs(direction.y):

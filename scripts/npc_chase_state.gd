@@ -1,9 +1,9 @@
 extends State
 
 func physics_update(delta):
-	# SAFETY CHECK: Only run code if the player exists!
+
 	if enemy.player:
-		
+
 		# 1. Check Distance (Now safe because we know player exists)
 		var dist = enemy.global_position.distance_to(enemy.player.global_position)
 		

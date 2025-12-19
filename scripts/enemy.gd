@@ -21,7 +21,7 @@ func _physics_process(delta):
 	deal_with_damage() # Keep damage logic global, or move to a StatusSM
 	update_health()
 
-# --- DAMAGE LOGIC (Kept from your original file) ---
+# --- DAMAGE LOGIC 
 var can_take_damage = true
 var player_in_attack_range = false
 
@@ -41,11 +41,6 @@ func deal_with_damage():
 func _on_take_damage_cooldown_timeout():
 	can_take_damage = true
 
-# --- SENSORS (Signals) ---
-# Link these in the Inspector to the Area2D signals
-
-
-
 func _on_detection_body_entered(body):
 		player = body
 		print("Player Detected!") # DEBUG PRINT
@@ -61,7 +56,6 @@ func _on_enemy_hitbox_body_entered(body):
 func _on_enemy_hitbox_body_exited(body):
 	if body.has_method("player"):
 		player_in_attack_range = false
-
 
 func _on_regen_cooldown_timeout() -> void:
 	pass # Replace with function body.
