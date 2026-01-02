@@ -547,10 +547,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qaulx"]
-radius = 178.53851
+radius = 48.010414
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4w8v"]
-radius = 16.0
+radius = 42.190044
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
 radius = 45.276924
@@ -562,26 +562,22 @@ script = ExtResource("1_c555k")
 sprite_frames = SubResource("SpriteFrames_t3vcr")
 animation = &"die"
 autoplay = "front_idle"
-frame_progress = 0.48025855
 
 [node name="detection" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
-visible = false
 shape = SubResource("CircleShape2D_qaulx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_c4w8v")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
-visible = false
-position = Vector2(0, 1)
+position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_5uy6h")
 
 [node name="take_damage_cooldown" type="Timer" parent="."]
@@ -620,10 +616,10 @@ script = ExtResource("13_x2x6a")
 
 [node name="enemy_healthbar" type="ProgressBar" parent="."]
 modulate = Color(0.39607844, 0, 0.39607844, 1)
-offset_left = -10.0
-offset_top = 33.0
-offset_right = 66.666664
-offset_bottom = 53.0
+offset_left = -11.0
+offset_top = -35.0
+offset_right = 65.666664
+offset_bottom = -15.0
 scale = Vector2(0.3, 0.3)
 show_percentage = false
 

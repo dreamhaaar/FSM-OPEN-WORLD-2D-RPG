@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://5vw5slh1mhcp"]
+[gd_scene load_steps=26 format=3 uid="uid://5vw5slh1mhcp"]
 
 [ext_resource type="PackedScene" uid="uid://dm3hh585lwdr1" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="Texture2D" uid="uid://qw6asfyaf7se" path="res://assets/TX Tileset Grass.png" id="3_k0juu"]
@@ -10,6 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://c0e4qgemievs8" path="res://assets/scene.png" id="7_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://c8hxda3ir0jd" path="res://scenes/goblin.tscn" id="7_i7141"]
 [ext_resource type="PackedScene" uid="uid://diohqtb673gps" path="res://scenes/orc.tscn" id="8_7r4gi"]
+[ext_resource type="PackedScene" uid="uid://etljmhg6aa0x" path="res://scenes/demon.tscn" id="11_e3hyu"]
+[ext_resource type="PackedScene" uid="uid://xdk7wd3ky2bd" path="res://scenes/slime.tscn" id="12_q5onr"]
+[ext_resource type="PackedScene" uid="uid://djl3tp4nkxmmq" path="res://scenes/mushroom.tscn" id="12_xo05s"]
+[ext_resource type="PackedScene" uid="uid://42l0ndas57nr" path="res://scenes/bat.tscn" id="13_dss4m"]
+[ext_resource type="PackedScene" uid="uid://dhlb7suh3p8cm" path="res://scenes/bringer.tscn" id="13_jhx03"]
+[ext_resource type="PackedScene" uid="uid://c84xy80plc4c3" path="res://scenes/gollux.tscn" id="14_dss4m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wyf3"]
 texture = ExtResource("3_k0juu")
@@ -7087,10 +7093,29 @@ position = Vector2(3681, 610)
 [node name="wolf" parent="." instance=ExtResource("7_4mrxx")]
 position = Vector2(3246, 805)
 
-[node name="goblin3" parent="." instance=ExtResource("8_7r4gi")]
+[node name="orc" parent="." instance=ExtResource("8_7r4gi")]
 position = Vector2(3286, 527)
 
+[node name="slime" parent="." instance=ExtResource("12_q5onr")]
+position = Vector2(3636, 129)
+
+[node name="mushroom" parent="." instance=ExtResource("12_xo05s")]
+position = Vector2(3354, 678)
+
+[node name="bat" parent="." instance=ExtResource("13_dss4m")]
+position = Vector2(3336, 69)
+
+[node name="gollux" parent="." instance=ExtResource("14_dss4m")]
+position = Vector2(3057, 392)
+
+[node name="demon" parent="." instance=ExtResource("11_e3hyu")]
+position = Vector2(3511, -94)
+
+[node name="bringer" parent="." instance=ExtResource("13_jhx03")]
+position = Vector2(3833, 322)
+
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-8, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1157, 356)
