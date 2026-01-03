@@ -509,7 +509,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qaulx"]
-radius = 38.209946
+radius = 175.4822
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4w8v"]
 radius = 33.37664
@@ -517,7 +517,7 @@ radius = 33.37664
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
 radius = 45.276924
 
-[node name="goblin" type="CharacterBody2D"]
+[node name="orc" type="CharacterBody2D"]
 script = ExtResource("1_0iu7c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -530,15 +530,18 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+visible = false
 shape = SubResource("CircleShape2D_qaulx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_c4w8v")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_5uy6h")
 
@@ -578,10 +581,10 @@ script = ExtResource("13_4r2hw")
 
 [node name="enemy_healthbar" type="ProgressBar" parent="."]
 modulate = Color(0.39607844, 0, 0.39607844, 1)
-offset_left = -11.0
-offset_top = -40.0
-offset_right = 65.666664
-offset_bottom = -20.0
+offset_left = -13.0
+offset_top = -25.0
+offset_right = 63.666664
+offset_bottom = -5.0
 scale = Vector2(0.3, 0.3)
 show_percentage = false
 

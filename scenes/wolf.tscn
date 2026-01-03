@@ -547,13 +547,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qaulx"]
-radius = 48.010414
+radius = 191.52545
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4w8v"]
-radius = 42.190044
+radius = 27.018513
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
-radius = 45.276924
+radius = 38.470768
 
 [node name="wolf" type="CharacterBody2D"]
 script = ExtResource("1_c555k")
@@ -561,7 +561,7 @@ script = ExtResource("1_c555k")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_t3vcr")
-animation = &"die"
+animation = &"front_attack"
 autoplay = "front_idle"
 
 [node name="detection" type="Area2D" parent="."]
@@ -569,16 +569,19 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+visible = false
 shape = SubResource("CircleShape2D_qaulx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 13)
+visible = false
+position = Vector2(1, 8)
 shape = SubResource("CircleShape2D_c4w8v")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
-position = Vector2(0, 8)
+visible = false
+position = Vector2(1, 7)
 shape = SubResource("CircleShape2D_5uy6h")
 
 [node name="take_damage_cooldown" type="Timer" parent="."]

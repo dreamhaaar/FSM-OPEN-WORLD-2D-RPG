@@ -515,13 +515,16 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+visible = false
 shape = SubResource("CircleShape2D_qaulx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_c4w8v")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
 position = Vector2(0, 1)
@@ -563,10 +566,10 @@ script = ExtResource("13_v8gx8")
 
 [node name="enemy_healthbar" type="ProgressBar" parent="."]
 modulate = Color(0.39607844, 0, 0.39607844, 1)
-offset_left = -10.0
-offset_top = 33.0
-offset_right = 66.666664
-offset_bottom = 53.0
+offset_left = -11.0
+offset_top = -28.0
+offset_right = 65.666664
+offset_bottom = -8.0
 scale = Vector2(0.3, 0.3)
 show_percentage = false
 

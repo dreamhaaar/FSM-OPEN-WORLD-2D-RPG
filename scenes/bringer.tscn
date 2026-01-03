@@ -195,7 +195,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qaulx"]
-radius = 71.17584
+radius = 295.52664
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4w8v"]
 radius = 58.821766
@@ -210,18 +210,21 @@ script = ExtResource("1_2sq14")
 position = Vector2(-24.999996, 0.9999999)
 scale = Vector2(1.4714285, 1.5591397)
 sprite_frames = SubResource("SpriteFrames_ha8lo")
-animation = &"idle"
-autoplay = "idle"
+animation = &"attack"
+autoplay = "attack"
+frame_progress = 0.44522938
 
 [node name="detection" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
-position = Vector2(26, 18)
+visible = false
+position = Vector2(14, 23)
 shape = SubResource("CircleShape2D_qaulx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(33, 20)
 rotation = -1.3932174
 shape = SubResource("CircleShape2D_c4w8v")
@@ -230,6 +233,7 @@ shape = SubResource("CircleShape2D_c4w8v")
 position = Vector2(1, 17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_5uy6h")
 
