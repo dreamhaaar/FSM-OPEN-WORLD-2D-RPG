@@ -494,13 +494,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qaulx"]
-radius = 47.010635
+radius = 178.53851
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4w8v"]
 radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
-radius = 49.0
+radius = 45.276924
 
 [node name="goblin" type="CharacterBody2D"]
 script = ExtResource("1_nadka")
@@ -524,7 +524,7 @@ shape = SubResource("CircleShape2D_c4w8v")
 [node name="enemy_hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
-position = Vector2(-1, -1)
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_5uy6h")
 
 [node name="take_damage_cooldown" type="Timer" parent="."]
@@ -563,10 +563,10 @@ script = ExtResource("13_v8gx8")
 
 [node name="enemy_healthbar" type="ProgressBar" parent="."]
 modulate = Color(0.39607844, 0, 0.39607844, 1)
-offset_left = -11.0
-offset_top = -32.0
-offset_right = 65.666664
-offset_bottom = -12.0
+offset_left = -10.0
+offset_top = 33.0
+offset_right = 66.666664
+offset_bottom = 53.0
 scale = Vector2(0.3, 0.3)
 show_percentage = false
 

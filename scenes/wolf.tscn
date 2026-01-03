@@ -559,6 +559,7 @@ radius = 45.276924
 script = ExtResource("1_c555k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_t3vcr")
 animation = &"die"
 autoplay = "front_idle"
