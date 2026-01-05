@@ -1,21 +1,28 @@
 extends State
 
+@export var anim_name: String = "death"
+@export var despawn_time: float = 2.0 # How long body stays before disappearing
+
 func enter():
-	# 1. Stop all movement immediately
+
 	enemy.velocity = Vector2.ZERO
 	
-	# 2. Disable collisions so the player can't hit the dead body
-	enemy.find_child("CollisionShape2D").set_deferred("disabled", true)
+
+	if enemy.anim:
+		enemy.anim.play(anim_name)
 	
-	# 3. Play the Death Animation
-	enemy.anim.play("die") 
+
+	var collider = enemy.get_node_or_null("CollisionShape2D")
+	if collider:
+		collider.set_deferred("disabled", true)
 	
-	# 4. Wait for the animation to finish
-	await get_tree().create_timer(1).timeout
+
+	enemy.set_physics_process(false) 
 	
-	# 5. NOW we delete the enemy
+
+	await get_tree().create_timer(despawn_time).timeout
 	enemy.queue_free()
 
-func physics_update(delta):
-	# Ensure they don't slide while dying
+func physics_update(_delta):
+	
 	enemy.velocity = Vector2.ZERO

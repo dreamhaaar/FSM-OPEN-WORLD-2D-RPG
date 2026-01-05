@@ -1,18 +1,20 @@
-[gd_scene load_steps=75 format=3 uid="uid://c8hxda3ir0jd"]
+[gd_scene load_steps=81 format=3 uid="uid://c8hxda3ir0jd"]
 
 [ext_resource type="Script" uid="uid://dqxti75ei6u5f" path="res://scripts/enemy.gd" id="1_nadka"]
 [ext_resource type="Texture2D" uid="uid://bwn63h3hr7wu4" path="res://assets/slash_goblin.png" id="2_nadka"]
 [ext_resource type="Texture2D" uid="uid://6i76no4wds1q" path="res://assets/idle_goblin.png" id="3_17tps"]
 [ext_resource type="Texture2D" uid="uid://cak80vhogk68w" path="res://assets/walk_goblin.png" id="4_y64qe"]
 [ext_resource type="Texture2D" uid="uid://bg550ik31h1ig" path="res://assets/hurt_goblin.png" id="5_0x8hd"]
-[ext_resource type="Script" uid="uid://dhw1xtffyjtr3" path="res://scripts/state_machine.gd" id="6_2q0rr"]
-[ext_resource type="Script" uid="uid://dtro1ab7ntuw5" path="res://scripts/npc_passive_state.gd" id="7_24xck"]
-[ext_resource type="Script" uid="uid://dck84cluxa1ge" path="res://scripts/npc_aggressive_state.gd" id="8_dqtp1"]
-[ext_resource type="Script" uid="uid://bkxtttgdg2kcx" path="res://scripts/npc_chase_state.gd" id="9_lhktg"]
-[ext_resource type="Script" uid="uid://d7vphcvleoh7" path="res://scripts/npc_idle_state.gd" id="10_8rfs3"]
-[ext_resource type="Script" uid="uid://ceu0voxoui8s3" path="res://scripts/npc_attack_state.gd" id="11_ks8t0"]
-[ext_resource type="Script" uid="uid://dbh4dte6dahfx" path="res://scripts/npc_flee_state.gd" id="12_13dsh"]
+[ext_resource type="Script" uid="uid://dhw1xtffyjtr3" path="res://scripts/finite_state_machine.gd" id="6_2q0rr"]
+[ext_resource type="Texture2D" uid="uid://6n5lkk6avl61" path="res://assets/hurt_npc.png" id="6_y64qe"]
+[ext_resource type="Script" uid="uid://bkxtttgdg2kcx" path="res://scripts/chase_substate.gd" id="9_lhktg"]
+[ext_resource type="Script" uid="uid://d7vphcvleoh7" path="res://scripts/idle_substate.gd" id="10_8rfs3"]
+[ext_resource type="Script" uid="uid://ceu0voxoui8s3" path="res://scripts/attack_substate.gd" id="11_ks8t0"]
+[ext_resource type="Script" uid="uid://dbh4dte6dahfx" path="res://scripts/flee_substate.gd" id="12_13dsh"]
+[ext_resource type="Script" uid="uid://cnriloijx2n2f" path="res://scripts/hurt_substate.gd" id="13_nadka"]
 [ext_resource type="Script" uid="uid://cf3sqw48gls84" path="res://scripts/npc_death_state.gd" id="13_v8gx8"]
+[ext_resource type="Script" uid="uid://cc2i0dnyacwtn" path="res://scripts/wander_substate.gd" id="16_0x8hd"]
+[ext_resource type="Script" uid="uid://dmso7woxoxb5a" path="res://scripts/super_state.gd" id="17_3wbsg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wbsg"]
 atlas = ExtResource("2_nadka")
@@ -174,6 +176,22 @@ region = Rect2(448, 128, 64, 64)
 atlas = ExtResource("4_y64qe")
 region = Rect2(512, 128, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x8hd"]
+atlas = ExtResource("3_17tps")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27f5s"]
+atlas = ExtResource("6_y64qe")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvyv0"]
+atlas = ExtResource("6_y64qe")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvs0g"]
+atlas = ExtResource("6_y64qe")
+region = Rect2(64, 192, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pnes"]
 atlas = ExtResource("2_nadka")
 region = Rect2(0, 192, 64, 64)
@@ -329,11 +347,11 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nr7up")
 }, {
-"duration": 5.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jukum")
 }],
 "loop": true,
-"name": &"die",
+"name": &"death",
 "speed": 5.0
 }, {
 "frames": [{
@@ -412,6 +430,38 @@ animations = [{
 }],
 "loop": true,
 "name": &"front_walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x8hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27f5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvyv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvs0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27f5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x8hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x8hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x8hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x8hd")
+}],
+"loop": true,
+"name": &"hurt",
 "speed": 10.0
 }, {
 "frames": [{
@@ -497,80 +547,103 @@ animations = [{
 radius = 178.53851
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4w8v"]
-radius = 16.0
+radius = 29.614185
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
-radius = 45.276924
+radius = 43.011627
 
 [node name="goblin" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+motion_mode = 1
 script = ExtResource("1_nadka")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_t3vcr")
-animation = &"side_walk"
-frame_progress = 0.66570234
+animation = &"hurt"
+frame_progress = 0.77548516
 
 [node name="detection" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
 shape = SubResource("CircleShape2D_qaulx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_c4w8v")
 
 [node name="enemy_hitbox" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
-position = Vector2(0, 1)
+position = Vector2(2, 4)
 shape = SubResource("CircleShape2D_5uy6h")
 
 [node name="take_damage_cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="BehaviorSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("6_2q0rr")
-initial_state = NodePath("Passive")
-
-[node name="Passive" type="Node" parent="BehaviorSM"]
-script = ExtResource("7_24xck")
-
-[node name="Aggressive" type="Node" parent="BehaviorSM"]
-script = ExtResource("8_dqtp1")
-
-[node name="MovementSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("6_2q0rr")
-initial_state = NodePath("Idle")
-
-[node name="Chase" type="Node" parent="MovementSM"]
-script = ExtResource("9_lhktg")
-
-[node name="Idle" type="Node" parent="MovementSM"]
-script = ExtResource("10_8rfs3")
-
-[node name="Attack" type="Node" parent="MovementSM"]
-script = ExtResource("11_ks8t0")
-
-[node name="Flee" type="Node" parent="MovementSM"]
-script = ExtResource("12_13dsh")
-
-[node name="Death" type="Node" parent="MovementSM"]
-script = ExtResource("13_v8gx8")
-
 [node name="regen_cooldown" type="Timer" parent="."]
 
 [node name="enemy_healthbar" type="ProgressBar" parent="."]
 modulate = Color(0.39607844, 0, 0.39607844, 1)
-offset_left = -10.0
-offset_top = 33.0
-offset_right = 66.666664
-offset_bottom = 53.0
+offset_left = -13.0
+offset_top = -26.0
+offset_right = 63.666664
+offset_bottom = -6.0
 scale = Vector2(0.3, 0.3)
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="HFSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("6_2q0rr")
+initial_state = NodePath("Passive")
+
+[node name="Passive" type="Node" parent="HFSM"]
+script = ExtResource("17_3wbsg")
+sub_fsm_path = NodePath("PassiveSM")
+default_substate = &"Idle"
+
+[node name="PassiveSM" type="Node" parent="HFSM/Passive"]
+script = ExtResource("6_2q0rr")
+
+[node name="Idle" type="Node" parent="HFSM/Passive/PassiveSM"]
+script = ExtResource("10_8rfs3")
+
+[node name="Wander" type="Node" parent="HFSM/Passive/PassiveSM"]
+script = ExtResource("16_0x8hd")
+
+[node name="Aggressive" type="Node" parent="HFSM"]
+script = ExtResource("17_3wbsg")
+sub_fsm_path = NodePath("AggressiveSM")
+default_substate = &"Chase"
+
+[node name="AggressiveSM" type="Node" parent="HFSM/Aggressive"]
+script = ExtResource("6_2q0rr")
+
+[node name="Chase" type="Node" parent="HFSM/Aggressive/AggressiveSM"]
+script = ExtResource("9_lhktg")
+
+[node name="Attack" type="Node" parent="HFSM/Aggressive/AggressiveSM"]
+script = ExtResource("11_ks8t0")
+
+[node name="Scared" type="Node" parent="HFSM"]
+script = ExtResource("17_3wbsg")
+sub_fsm_path = NodePath("ScaredSM")
+default_substate = &"Flee"
+
+[node name="ScaredSM" type="Node" parent="HFSM/Scared"]
+script = ExtResource("6_2q0rr")
+
+[node name="Flee" type="Node" parent="HFSM/Scared/ScaredSM"]
+script = ExtResource("12_13dsh")
+
+[node name="Hurt" type="Node" parent="HFSM"]
+script = ExtResource("13_nadka")
+
+[node name="Death" type="Node" parent="HFSM"]
+script = ExtResource("13_v8gx8")
 
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_exited" from="detection" to="." method="_on_detection_body_exited"]
