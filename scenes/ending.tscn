@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbyqcbv77odki"]
+[gd_scene load_steps=8 format=3 uid="uid://ddku26pdkp8oh"]
 
-[ext_resource type="Texture2D" uid="uid://d03n6n2wj5b1b" path="res://assets/game_title.png" id="1_ilyg3"]
-[ext_resource type="Script" uid="uid://dpf1yv3ne6to5" path="res://scripts/intro_sequence.gd" id="1_yle8u"]
-[ext_resource type="FontFile" uid="uid://cjvtgfjtrvpef" path="res://assets/MedievalSharp-Regular.ttf" id="2_eda3u"]
-[ext_resource type="AudioStream" uid="uid://dvc252nt52qlu" path="res://sfx/BG_MUSIC.mp3" id="4_he61g"]
+[ext_resource type="Script" uid="uid://dpf1yv3ne6to5" path="res://scripts/intro_sequence.gd" id="1_nfmnx"]
+[ext_resource type="Texture2D" uid="uid://d03n6n2wj5b1b" path="res://assets/game_title.png" id="2_qa3ag"]
+[ext_resource type="FontFile" uid="uid://cjvtgfjtrvpef" path="res://assets/MedievalSharp-Regular.ttf" id="3_5amew"]
+[ext_resource type="AudioStream" uid="uid://djodkoxb4p20b" path="res://sfx/ending_music_1.mp3" id="4_nfmnx"]
 
 [sub_resource type="Animation" id="Animation_yle8u"]
 length = 0.001
@@ -306,14 +306,14 @@ _data = {
 &"intro_fade": SubResource("Animation_eda3u")
 }
 
-[node name="intro_sequence" type="Control"]
+[node name="ending" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_yle8u")
+script = ExtResource("1_nfmnx")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -341,7 +341,7 @@ offset_right = 234.875
 offset_bottom = 201.125
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ilyg3")
+texture = ExtResource("2_qa3ag")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -367,9 +367,10 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.99999994, 0.678607, 0.1996817, 1)
-theme_override_fonts/font = ExtResource("2_eda3u")
+theme_override_fonts/font = ExtResource("3_5amew")
 theme_override_font_sizes/font_size = 37
-text = "A Project for Automata & Language Theory"
+text = "Thank you for playing this game."
+horizontal_alignment = 1
 
 [node name="Label1" type="Label" parent="."]
 modulate = Color(0.67481464, 0.67481464, 0.6748146, 1)
@@ -386,9 +387,9 @@ offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.8352941, 0.30980393, 1)
-theme_override_fonts/font = ExtResource("2_eda3u")
+theme_override_fonts/font = ExtResource("3_5amew")
 theme_override_font_sizes/font_size = 40
-text = "Existence is a Finite State"
+text = "Dedicated to Prof. Ria Sagum"
 horizontal_alignment = 1
 visible_characters = 0
 visible_ratio = 0.0
@@ -408,9 +409,9 @@ offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.8352941, 0.30980393, 1)
-theme_override_fonts/font = ExtResource("2_eda3u")
+theme_override_fonts/font = ExtResource("3_5amew")
 theme_override_font_sizes/font_size = 40
-text = "Action triggers Reaction. Fear triggers Flight"
+text = "Group "
 horizontal_alignment = 1
 visible_characters = 0
 visible_ratio = 0.0
@@ -430,7 +431,7 @@ offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.8352941, 0.30980393, 1)
-theme_override_fonts/font = ExtResource("2_eda3u")
+theme_override_fonts/font = ExtResource("3_5amew")
 theme_override_font_sizes/font_size = 40
 text = "We are all prisoners of the Transition Function"
 horizontal_alignment = 1
@@ -452,7 +453,7 @@ offset_bottom = 24.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.8352941, 0.30980393, 1)
-theme_override_fonts/font = ExtResource("2_eda3u")
+theme_override_fonts/font = ExtResource("3_5amew")
 theme_override_font_sizes/font_size = 44
 text = "Remain..."
 horizontal_alignment = 1
@@ -476,10 +477,10 @@ offset_right = 234.875
 offset_bottom = 201.125
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ilyg3")
+texture = ExtResource("2_qa3ag")
 expand_mode = 1
 
-[node name="BG_Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_he61g")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nfmnx")
 volume_db = -6.679
 autoplay = true
