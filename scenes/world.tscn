@@ -12976,7 +12976,7 @@ layer_0/tile_data = PackedInt32Array(-1245254, 524288, 0, -1179718, 524288, 1, -
 position = Vector2(-321, -60)
 
 [node name="goblin2" parent="." instance=ExtResource("7_i7141")]
-position = Vector2(-321, -60)
+position = Vector2(-111, -136)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 26)
