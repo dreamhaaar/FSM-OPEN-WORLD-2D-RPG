@@ -628,7 +628,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
-radius = 13.0
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
 radius = 22.0
@@ -647,6 +647,7 @@ autoplay = "right_walk"
 frame_progress = 0.99611366
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.38)
 shape = SubResource("CircleShape2D_qhqgy")
 
 [node name="player_hitbox" type="Area2D" parent="."]
