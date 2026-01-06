@@ -1,21 +1,12 @@
 extends SuperState
+@export var low_health_threshold := 40
 
-@export var low_health_threshold := 30
+func physics_update(delta):
+	super.physics_update(delta)
 
-func enter():
-	print("[HFSM] Player Detected -> Aggressive")
-	super.enter()  
+	if enemy.health <= low_health_threshold:
+		state_machine.transition_to("Scared", "LowHealth")
+		return
 
-func update(delta: float):
-
-	super.update(delta)
-
-	
 	if enemy.player == null:
-		state_machine.transition_to("Passive")
-		return
-
-	
-	if enemy.health < low_health_threshold:
-		state_machine.transition_to("Scared")
-		return
+		state_machine.transition_to("Passive", "PlayerLost")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://c8hxda3ir0jd"]
+[gd_scene load_steps=83 format=3 uid="uid://c8hxda3ir0jd"]
 
 [ext_resource type="Script" uid="uid://dqxti75ei6u5f" path="res://scripts/enemy.gd" id="1_nadka"]
 [ext_resource type="Texture2D" uid="uid://bwn63h3hr7wu4" path="res://assets/slash_goblin.png" id="2_nadka"]
@@ -7,14 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://bg550ik31h1ig" path="res://assets/hurt_goblin.png" id="5_0x8hd"]
 [ext_resource type="Script" uid="uid://dhw1xtffyjtr3" path="res://scripts/finite_state_machine.gd" id="6_2q0rr"]
 [ext_resource type="Texture2D" uid="uid://6n5lkk6avl61" path="res://assets/hurt_npc.png" id="6_y64qe"]
+[ext_resource type="Script" uid="uid://dtro1ab7ntuw5" path="res://scripts/passive_superstate.gd" id="8_3wbsg"]
 [ext_resource type="Script" uid="uid://bkxtttgdg2kcx" path="res://scripts/chase_substate.gd" id="9_lhktg"]
 [ext_resource type="Script" uid="uid://d7vphcvleoh7" path="res://scripts/idle_substate.gd" id="10_8rfs3"]
+[ext_resource type="Script" uid="uid://dck84cluxa1ge" path="res://scripts/aggressive_superstate.gd" id="11_2q0rr"]
 [ext_resource type="Script" uid="uid://ceu0voxoui8s3" path="res://scripts/attack_substate.gd" id="11_ks8t0"]
 [ext_resource type="Script" uid="uid://dbh4dte6dahfx" path="res://scripts/flee_substate.gd" id="12_13dsh"]
 [ext_resource type="Script" uid="uid://cnriloijx2n2f" path="res://scripts/hurt_substate.gd" id="13_nadka"]
 [ext_resource type="Script" uid="uid://cf3sqw48gls84" path="res://scripts/npc_death_state.gd" id="13_v8gx8"]
+[ext_resource type="Script" uid="uid://dxaxxnxth1b0e" path="res://scripts/scared_superstate.gd" id="14_24xck"]
 [ext_resource type="Script" uid="uid://cc2i0dnyacwtn" path="res://scripts/wander_substate.gd" id="16_0x8hd"]
-[ext_resource type="Script" uid="uid://dmso7woxoxb5a" path="res://scripts/super_state.gd" id="17_3wbsg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wbsg"]
 atlas = ExtResource("2_nadka")
@@ -596,14 +598,12 @@ show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="HFSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="HFSM" type="Node" parent="."]
 script = ExtResource("6_2q0rr")
-initial_state = NodePath("Passive")
 
-[node name="Passive" type="Node" parent="HFSM"]
-script = ExtResource("17_3wbsg")
-sub_fsm_path = NodePath("PassiveSM")
-default_substate = &"Idle"
+[node name="Passive" type="Node" parent="HFSM" node_paths=PackedStringArray("sub_fsm")]
+script = ExtResource("8_3wbsg")
+sub_fsm = NodePath("PassiveSM")
 
 [node name="PassiveSM" type="Node" parent="HFSM/Passive"]
 script = ExtResource("6_2q0rr")
@@ -614,10 +614,9 @@ script = ExtResource("10_8rfs3")
 [node name="Wander" type="Node" parent="HFSM/Passive/PassiveSM"]
 script = ExtResource("16_0x8hd")
 
-[node name="Aggressive" type="Node" parent="HFSM"]
-script = ExtResource("17_3wbsg")
-sub_fsm_path = NodePath("AggressiveSM")
-default_substate = &"Chase"
+[node name="Aggressive" type="Node" parent="HFSM" node_paths=PackedStringArray("sub_fsm")]
+script = ExtResource("11_2q0rr")
+sub_fsm = NodePath("AggressiveSM")
 
 [node name="AggressiveSM" type="Node" parent="HFSM/Aggressive"]
 script = ExtResource("6_2q0rr")
@@ -628,10 +627,9 @@ script = ExtResource("9_lhktg")
 [node name="Attack" type="Node" parent="HFSM/Aggressive/AggressiveSM"]
 script = ExtResource("11_ks8t0")
 
-[node name="Scared" type="Node" parent="HFSM"]
-script = ExtResource("17_3wbsg")
-sub_fsm_path = NodePath("ScaredSM")
-default_substate = &"Flee"
+[node name="Scared" type="Node" parent="HFSM" node_paths=PackedStringArray("sub_fsm")]
+script = ExtResource("14_24xck")
+sub_fsm = NodePath("ScaredSM")
 
 [node name="ScaredSM" type="Node" parent="HFSM/Scared"]
 script = ExtResource("6_2q0rr")

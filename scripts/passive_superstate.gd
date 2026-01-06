@@ -1,17 +1,9 @@
-extends State
+extends SuperState
 
-var regen_rate = 10.0 
-
-func update(delta):
-
-	if enemy.health < enemy.max_health:
-		enemy.health += regen_rate * delta
-		
-
-		if enemy.health > enemy.max_health:
-			enemy.health = enemy.max_health
-			
-
+func physics_update(delta):
+	super.physics_update(delta)
+	# print("PASSIVE PHYSICS sees player:", enemy.player) <--- REMOVE OR COMMENT OUT
+	
+	# Only transition if we actually see them
 	if enemy.player != null:
-		state_machine.transition_to("Aggressive")
-		enemy.movement_sm.transition_to("Chase")
+		state_machine.transition_to("Aggressive", "PlayerDetected")

@@ -9,11 +9,10 @@ var target_position: Vector2
 var wander_timer: float = 0.0
 
 func enter():
-	# 1. Remember where we started (so we don't wander too far away from home)
-	if start_position == Vector2.ZERO:
-		start_position = enemy.global_position
+	# 1. Update start_position to CURRENT location every time we start wandering
+	start_position = enemy.global_position 
 	
-	# 2. Pick a random point around the start position
+	# 2. Pick a random point around HERE
 	var random_x = randf_range(-wander_radius, wander_radius)
 	var random_y = randf_range(-wander_radius, wander_radius)
 	target_position = start_position + Vector2(random_x, random_y)
