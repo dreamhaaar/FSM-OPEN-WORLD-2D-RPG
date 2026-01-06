@@ -1,7 +1,7 @@
 extends State
 
 @export var anim_name: String = "death"
-@export var despawn_time: float = 2.0 # How long body stays before disappearing
+@export var despawn_time: float = 1.0 # How long body stays before disappearing
 
 func enter():
 

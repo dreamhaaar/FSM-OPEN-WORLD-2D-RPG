@@ -1,10 +1,9 @@
 extends SuperState
-@export var low_health_threshold := 40
 
-func physics_update(delta):
-	super.physics_update(delta)
+func update(delta):
+	super.update(delta)
 
-	if enemy.health <= low_health_threshold:
+	if enemy.health <= enemy.low_health_threshold:
 		state_machine.transition_to("Scared", "LowHealth")
 		return
 

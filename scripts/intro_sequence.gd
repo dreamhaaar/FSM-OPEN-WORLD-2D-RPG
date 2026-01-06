@@ -15,7 +15,6 @@ func _ready() -> void:
 		# 3. Transition
 		_finish_intro()
 	else:
-		print("Error: Animation 'intro_fade' not found!")
 		_finish_intro()
 
 func _unhandled_input(event):

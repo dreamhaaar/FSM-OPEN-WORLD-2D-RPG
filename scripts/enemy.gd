@@ -14,6 +14,9 @@ var knockback_friction := 1000
 var hit_count := 0
 var hits_to_knockback := 5
 
+@export var low_health_threshold := 40
+@export var recovered_health_threshold := 60
+
 # --- HURT MEMORY (optional use by Hurt) ---
 var hurt_prev_super: String = "Passive"
 var hurt_prev_sub: String = "Idle"
@@ -55,12 +58,9 @@ func _ready():
 	# Regen timer
 	var regen_timer := get_node_or_null("regen_cooldown")
 	if regen_timer:
-		regen_timer.wait_time = 1.0
+		regen_timer.wait_time = 3.0
 		regen_timer.one_shot = false
 		regen_timer.start()
-		print(">> Regen System: ACTIVE")
-	else:
-		print(">> ERROR: Could not find 'regen_cooldown' Timer node!")
 
 func _start_hfsm_safely():
 	# HFSM must have initial_state set in Inspector, otherwise start() won't do anything
