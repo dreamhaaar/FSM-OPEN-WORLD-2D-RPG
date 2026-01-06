@@ -628,10 +628,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
-radius = 23.021729
+radius = 13.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
-radius = 31.144823
+radius = 22.0
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 6
@@ -639,7 +639,8 @@ motion_mode = 1
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(1.1793154, 0.8046875)
+position = Vector2(-0.015, 0)
+scale = Vector2(0.609375, 0.5625)
 sprite_frames = SubResource("SpriteFrames_cs1tg")
 animation = &"right_jump"
 autoplay = "right_walk"

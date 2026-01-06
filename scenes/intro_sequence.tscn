@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbyqcbv77odki"]
+[gd_scene load_steps=8 format=3 uid="uid://dbyqcbv77odki"]
 
 [ext_resource type="Texture2D" uid="uid://d03n6n2wj5b1b" path="res://assets/game_title.png" id="1_ilyg3"]
 [ext_resource type="Script" uid="uid://dpf1yv3ne6to5" path="res://scripts/intro_sequence.gd" id="1_yle8u"]
 [ext_resource type="FontFile" uid="uid://cjvtgfjtrvpef" path="res://assets/MedievalSharp-Regular.ttf" id="2_eda3u"]
+[ext_resource type="AudioStream" uid="uid://dvc252nt52qlu" path="res://sfx/BG_MUSIC.mp3" id="4_he61g"]
 
 [sub_resource type="Animation" id="Animation_yle8u"]
 length = 0.001
@@ -477,3 +478,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_ilyg3")
 expand_mode = 1
+
+[node name="BG_Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_he61g")
+volume_db = -6.679
+autoplay = true

@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 var enemy_in_range = false
 var enemy_attack_cooldown = true
+@onready var sfx_slash: AudioStreamPlayer = $"../sfx_slash"
+@onready var sfx_footstep: AudioStreamPlayer = $"../sfx_footstep"
+@onready var sfx_jump: AudioStreamPlayer = $"../sfx_jump"
+@onready var sfx_damagegrunt: AudioStreamPlayer = $"../sfx_damagegrunt"
 
 # --- SHARED VARIABLES ---
 var health = 100
@@ -53,6 +57,7 @@ func handle_jump(delta):
 	# If we are on the ground, allow jumping
 	if z_height == 0:
 		if Input.is_action_just_pressed("jump"):
+			sfx_jump.play()
 			z_velocity = jump_force
 	
 	# Apply "Fake" Gravity
@@ -100,6 +105,7 @@ func take_damage(amount, attacker_pos):
 	health -= amount
 	hit_count += 1  
 	
+	sfx_damagegrunt.play()
 	print("Player took damage! Health: ", health, " | Hit Count: ", hit_count)
 	
 	# --- CHECK FOR COMBO KNOCKBACK ---
@@ -191,6 +197,7 @@ func attack():
 		elif direction == "down":
 			$AnimatedSprite2D.play("front_attack")
 			$deal_attack_timer.start()
+		sfx_slash.play()
 
 func _on_deal_attack_timer_timeout() -> void:
 	$deal_attack_timer.stop()

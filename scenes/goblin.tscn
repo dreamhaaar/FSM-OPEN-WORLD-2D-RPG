@@ -549,10 +549,10 @@ animations = [{
 radius = 178.53851
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4w8v"]
-radius = 29.614185
+radius = 21.023796
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uy6h"]
-radius = 43.011627
+radius = 39.012817
 
 [node name="goblin" type="CharacterBody2D"]
 collision_layer = 4
@@ -561,6 +561,7 @@ motion_mode = 1
 script = ExtResource("1_nadka")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.6875, 0.6875)
 sprite_frames = SubResource("SpriteFrames_t3vcr")
 animation = &"hurt"
 frame_progress = 0.77548516
