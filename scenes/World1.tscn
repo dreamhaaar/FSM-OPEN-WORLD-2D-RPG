@@ -1,11 +1,9 @@
-[gd_scene load_steps=13 format=4 uid="uid://dvkw3foqewf6o"]
+[gd_scene load_steps=11 format=4 uid="uid://dvkw3foqewf6o"]
 
 [ext_resource type="PackedScene" uid="uid://dm3hh585lwdr1" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="TileSet" uid="uid://guxe8vhomgv" path="res://house.tres" id="2_71j4m"]
-[ext_resource type="PackedScene" uid="uid://1rfw5wb4sk87" path="res://scenes/wolf.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://c8hxda3ir0jd" path="res://scenes/goblin.tscn" id="7_i7141"]
 [ext_resource type="AudioStream" uid="uid://bt4d8e08a8e4" path="res://sfx/02. Perilous Dungeon.mp3" id="7_ucgi8"]
-[ext_resource type="PackedScene" uid="uid://c1h7741dwxdb5" path="res://scenes/orc.tscn" id="8_7r4gi"]
 [ext_resource type="AudioStream" uid="uid://d3eaa6jvbr44x" path="res://sfx/WEAPSwrd_SwordStab_HoveAud_SwordCombat_01.wav" id="8_vrmse"]
 [ext_resource type="AudioStream" uid="uid://u84s1fk7wx4r" path="res://sfx/DIRT - Walk 1.wav" id="9_jcmaj"]
 [ext_resource type="AudioStream" uid="uid://qdbqho8uu5t8" path="res://sfx/SFX_Jump_09.wav" id="10_oye7q"]
@@ -115,38 +113,6 @@ position = Vector2(488, 840)
 wait_time = 0.2
 one_shot = true
 
-[node name="goblin2" parent="." instance=ExtResource("7_i7141")]
-z_index = 2
-position = Vector2(977, 852)
-
-[node name="knockback_timer" type="Timer" parent="goblin2"]
-wait_time = 0.2
-one_shot = true
-
-[node name="goblin5" parent="." instance=ExtResource("7_i7141")]
-z_index = 2
-position = Vector2(734, 938)
-
-[node name="knockback_timer" type="Timer" parent="goblin5"]
-wait_time = 0.2
-one_shot = true
-
-[node name="goblin6" parent="." instance=ExtResource("7_i7141")]
-z_index = 2
-position = Vector2(614, 1115)
-
-[node name="knockback_timer" type="Timer" parent="goblin6"]
-wait_time = 0.2
-one_shot = true
-
-[node name="goblin7" parent="." instance=ExtResource("7_i7141")]
-z_index = 2
-position = Vector2(964, 479)
-
-[node name="knockback_timer" type="Timer" parent="goblin7"]
-wait_time = 0.2
-one_shot = true
-
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -181,15 +147,5 @@ position = Vector2(1270.0001, 626.33746)
 scale = Vector2(0.865, 0.865)
 shape = SubResource("RectangleShape2D_2p8op")
 
-[node name="wolf" parent="." instance=ExtResource("7_4mrxx")]
-position = Vector2(1173, 1106)
-
-[node name="goblin3" parent="." instance=ExtResource("8_7r4gi")]
-position = Vector2(759, 1136)
-
 [connection signal="timeout" from="player/knockback_timer" to="player" method="_on_knockback_timer_timeout"]
 [connection signal="timeout" from="goblin/knockback_timer" to="goblin" method="_on_knockback_timer_timeout"]
-[connection signal="timeout" from="goblin2/knockback_timer" to="goblin2" method="_on_knockback_timer_timeout"]
-[connection signal="timeout" from="goblin5/knockback_timer" to="goblin5" method="_on_knockback_timer_timeout"]
-[connection signal="timeout" from="goblin6/knockback_timer" to="goblin6" method="_on_knockback_timer_timeout"]
-[connection signal="timeout" from="goblin7/knockback_timer" to="goblin7" method="_on_knockback_timer_timeout"]

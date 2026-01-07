@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://b3vwtvkgut3ur"]
+[gd_scene load_steps=11 format=4 uid="uid://b3vwtvkgut3ur"]
 
 [ext_resource type="TileSet" uid="uid://guxe8vhomgv" path="res://house.tres" id="1_u5ktm"]
 [ext_resource type="PackedScene" uid="uid://dm3hh585lwdr1" path="res://scenes/player.tscn" id="2_3m1hs"]
@@ -7,6 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://qdbqho8uu5t8" path="res://sfx/SFX_Jump_09.wav" id="5_uxhhh"]
 [ext_resource type="AudioStream" uid="uid://bokykx5ph8ebp" path="res://sfx/VOXScrm_DamageGrunt_HoveAudio_SwordCombat_01.wav" id="6_m7cqh"]
 [ext_resource type="AudioStream" uid="uid://btu27rqf7buxl" path="res://sfx/03. Boss Battle.mp3" id="7_0hg7c"]
+[ext_resource type="PackedScene" uid="uid://c1h7741dwxdb5" path="res://scenes/orc.tscn" id="8_m7cqh"]
+[ext_resource type="PackedScene" uid="uid://1rfw5wb4sk87" path="res://scenes/wolf.tscn" id="9_xj6ct"]
+[ext_resource type="PackedScene" uid="uid://c8hxda3ir0jd" path="res://scenes/goblin.tscn" id="10_xj6ct"]
 
 [node name="World 2" type="Node2D"]
 
@@ -97,5 +100,29 @@ volume_db = -8.587
 stream = ExtResource("7_0hg7c")
 volume_db = -18.16
 autoplay = true
+
+[node name="goblin" parent="." instance=ExtResource("8_m7cqh")]
+z_index = 3
+position = Vector2(77, 35)
+
+[node name="goblin2" parent="." instance=ExtResource("9_xj6ct")]
+z_index = 3
+position = Vector2(199, -12)
+
+[node name="goblin3" parent="." instance=ExtResource("10_xj6ct")]
+z_index = 3
+position = Vector2(294, 52)
+
+[node name="goblin4" parent="." instance=ExtResource("8_m7cqh")]
+z_index = 3
+position = Vector2(350, 106)
+
+[node name="goblin5" parent="." instance=ExtResource("8_m7cqh")]
+z_index = 3
+position = Vector2(243, 266)
+
+[node name="goblin6" parent="." instance=ExtResource("9_xj6ct")]
+z_index = 3
+position = Vector2(65, 266)
 
 [connection signal="timeout" from="player/knockback_timer" to="player" method="_on_knockback_timer_timeout"]
