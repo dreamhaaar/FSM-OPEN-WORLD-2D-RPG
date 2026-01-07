@@ -13,10 +13,10 @@
 [ext_resource type="Script" uid="uid://dck84cluxa1ge" path="res://scripts/aggressive_superstate.gd" id="11_2q0rr"]
 [ext_resource type="Script" uid="uid://ceu0voxoui8s3" path="res://scripts/attack_substate.gd" id="11_ks8t0"]
 [ext_resource type="Script" uid="uid://dbh4dte6dahfx" path="res://scripts/flee_substate.gd" id="12_13dsh"]
-[ext_resource type="Script" uid="uid://cnriloijx2n2f" path="res://scripts/hurt_substate.gd" id="13_nadka"]
 [ext_resource type="Script" uid="uid://cf3sqw48gls84" path="res://scripts/npc_death_state.gd" id="13_v8gx8"]
 [ext_resource type="Script" uid="uid://dxaxxnxth1b0e" path="res://scripts/scared_superstate.gd" id="14_24xck"]
 [ext_resource type="Script" uid="uid://cc2i0dnyacwtn" path="res://scripts/wander_substate.gd" id="16_0x8hd"]
+[ext_resource type="Script" uid="uid://be4nlae05jpmv" path="res://scripts/context_hurt.gd" id="16_3wbsg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wbsg"]
 atlas = ExtResource("2_nadka")
@@ -637,8 +637,17 @@ script = ExtResource("6_2q0rr")
 [node name="Flee" type="Node" parent="HFSM/Scared/ScaredSM"]
 script = ExtResource("12_13dsh")
 
-[node name="Hurt" type="Node" parent="HFSM"]
-script = ExtResource("13_nadka")
+[node name="P_Hurt" type="Node" parent="HFSM"]
+script = ExtResource("16_3wbsg")
+return_to_state_name = "Passive"
+
+[node name="A_Hurt" type="Node" parent="HFSM"]
+script = ExtResource("16_3wbsg")
+return_to_state_name = "Aggressive"
+
+[node name="S_Hurt" type="Node" parent="HFSM"]
+script = ExtResource("16_3wbsg")
+return_to_state_name = "Scared"
 
 [node name="Death" type="Node" parent="HFSM"]
 script = ExtResource("13_v8gx8")

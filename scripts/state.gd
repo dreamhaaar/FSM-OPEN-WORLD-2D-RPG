@@ -1,3 +1,4 @@
+#THIS WILL BE INHERITED AND IMPLEMENTED BY THE SUBSTATES
 class_name State
 extends Node
 
