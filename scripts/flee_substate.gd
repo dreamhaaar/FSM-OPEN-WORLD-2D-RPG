@@ -1,30 +1,29 @@
+# inherit and implement the state 
 extends State
 
+# THIS MAKES THE NPC RUN FAST
 @export var flee_speed: float = 100.0
 @export var anim_name: String = "side_walk"
 
 # Track moving state for smoother transitions
 var is_moving = false
 
+
+# PLAY ANIMATOION
 func enter():
 	if enemy.anim:
 		enemy.anim.play(anim_name)
 
 func physics_update(_delta: float):
-	# 1. PLAYER LOST LOGIC (THE FIX IS HERE)
+
 	if enemy.player == null:
-		# --- BUG WAS HERE ---
-		# DO NOT call state_machine.transition_to("Passive") here.
-		# If you do, enemy.gd will force it back to Scared instantly because HP is low.
-		
-		# CORRECT LOGIC: Just hide and wait for health regen.
 		enemy.velocity = Vector2.ZERO
 		if enemy.anim: enemy.anim.play("side_idle")
 		return 
 
 	var distance = enemy.global_position.distance_to(enemy.player.global_position)
 
-	# 2. HYSTERESIS LOGIC (Prevents Jitter)
+	# TO STOP THE SPRITE FROM JITTERING
 	var stop_threshold = 350.0 
 	var start_threshold = 300.0
 	
@@ -35,13 +34,11 @@ func physics_update(_delta: float):
 		if distance < start_threshold:
 			is_moving = true 
 			
-	# 3. MOVEMENT APPLICATION
+# ANIMATION
 	if not is_moving:
-		# SAFE DISTANCE: Stop and Catch Breath
 		enemy.velocity = Vector2.ZERO
 		if enemy.anim: enemy.anim.play("side_idle")
 	else:
-		# DANGER: Run Away!
 		var direction = (enemy.global_position - enemy.player.global_position).normalized()
 		enemy.velocity = direction * flee_speed
 		enemy.move_and_slide()

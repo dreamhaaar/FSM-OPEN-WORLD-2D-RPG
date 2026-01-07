@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-var enemy_in_range = false
-var enemy_attack_cooldown = true
 @onready var sfx_slash: AudioStreamPlayer = $"../sfx_slash"
 @onready var sfx_footstep: AudioStreamPlayer = $"../sfx_footstep"
 @onready var sfx_jump: AudioStreamPlayer = $"../sfx_jump"
 @onready var sfx_damagegrunt: AudioStreamPlayer = $"../sfx_damagegrunt"
+
+var enemy_in_range = false
+var enemy_attack_cooldown = true
 
 # --- SHARED VARIABLES ---
 var health = 100
@@ -69,6 +70,7 @@ func handle_jump(delta):
 		if z_height <= 0:
 			z_height = 0
 			z_velocity = 0
+	
 	
 	# Update the Visual Sprite Position
 	# We move the sprite UP (negative Y) based on Z-Height
@@ -181,6 +183,7 @@ func attack():
 
 	var direction = current_direction
 	if Input.is_action_just_pressed("attack"):
+		sfx_slash.play()
 		global.player_current_attack = true
 		attack_ip = true
 		if direction == "right":
@@ -197,7 +200,6 @@ func attack():
 		elif direction == "down":
 			$AnimatedSprite2D.play("front_attack")
 			$deal_attack_timer.start()
-		sfx_slash.play()
 
 func _on_deal_attack_timer_timeout() -> void:
 	$deal_attack_timer.stop()
